@@ -8,7 +8,7 @@ var bb =  require('express-busboy');
 //parse env file
 var env_result = require('dotenv').config();
 if(env_result.error){
-  throw error;
+  throw env_result.error;
   process.exit(1);
 }
 
