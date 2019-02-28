@@ -6,8 +6,11 @@ var mongoose = require('mongoose');
 var bb =  require('express-busboy');
 
 //parse env file
-require('dotenv').config();
-
+var env_result = require('dotenv').config();
+if(env_result.error){
+  throw error;
+  process.exit(1);
+}
 
 //errorHandlers
 var errors = require('./helpers/errors');
