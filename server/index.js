@@ -5,11 +5,12 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var bb =  require('express-busboy');
 
-//parse env file
-var env_result = require('dotenv').config();
-if(env_result.error){
-  throw env_result.error;
-  process.exit(1);
+if(process.env.NODE_ENV!='production'){
+  //parse env file
+  var env_result = require('dotenv').config();
+  if(env_result.error){
+    throw env_result.error;
+  }  
 }
 
 //errorHandlers
