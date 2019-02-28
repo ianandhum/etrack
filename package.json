@@ -1,0 +1,23 @@
+{
+  "name": "etrack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "prod": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015-node6": "^0.4.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-busboy": "^7.0.1",
+    "mongoose": "^5.4.14",
+    "morgan": "^1.9.1",
+    "source-map-support": "^0.5.10"
+  }
+}
