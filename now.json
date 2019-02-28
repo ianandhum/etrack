@@ -1,5 +1,7 @@
 {
     "version":2,
+    "name":"Etrack ANLON",
+    "alias":"etrack-anlon.pro910.com",
     "builds":[
         {"src":"client/package.json","use":"@now/static-build","config":{"distDir":"build"}},
         {"src":"server.js","use":"@now/node-server"}
