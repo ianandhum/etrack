@@ -1,31 +1,13 @@
 import React from 'react'
-
 import {Link} from 'react-router-dom'
-import styled,{withTheme} from 'styled-components'
+import {styled,withTheme} from 'reakit'
+
+import {Button} from "../components/util/Buttons"
+import ShortHemlet from '../helpers/ShortHelmet'
+import Page from '../components/shared/Page';
+
 
 const RouteNotFound = (props)=>{
-
-    const Button = styled.button`
-    display: inline-block;
-    color: ${props.theme.primary};
-    font-size: 1em;
-    margin: 1em 0;
-    padding: 0.25em 1em;
-    border: 2px solid ${props.theme.primary};
-    border-radius: 3px;
-    cursor:pointer;
-    text-decoration:none;
-    
-    :visited{
-        color:${props.theme.secondary};
-        border-color:${props.theme.secondary};
-    }
-    :hover{
-        color:${props.theme.hover};
-        border-color:${props.theme.hover};
-        
-    }
-    `;
 
     const BorderedBox = styled.div`
     padding:30px 20px;
@@ -44,11 +26,16 @@ const RouteNotFound = (props)=>{
         margin:20px 0;
     `
     return (
-        <BorderedBox>
-            <BigText>404</BigText>
-            <div>The requested file was not found </div>
-            <Button as={Link} to = "/">Go Back</Button>
-        </BorderedBox>
+        <>
+            <ShortHemlet title = "Page Not Found"/>
+            <Page>
+                <BorderedBox>
+                    <BigText>404</BigText>
+                    <div>The requested page was not found </div>
+                    <Button use={Link} to = "/" palette = "secondary" tone="1" margin="10px 0" >Go Back</Button>
+                </BorderedBox>
+            </Page>
+        </>
     )
 }
 
