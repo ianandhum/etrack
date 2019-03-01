@@ -15,7 +15,7 @@ export default function configureStore(preloadedState) {
         routerMiddleware(history)
       ),
       // Redux devtools extensions
-      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : ()=>()
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : ()=>(null)
     )
   )
   return store
