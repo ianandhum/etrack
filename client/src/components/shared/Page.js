@@ -1,22 +1,19 @@
 import React from 'react'
-import FlexView from 'react-flexview'
+import {Flex} from 'reakit'
+
 import TopBar from './TopBar'
-import Card from '../util/Card';
 
 
 
 const Page = (props)=>(
-    <FlexView column>
-        <FlexView style={{height:"60px",zIndex:"1"}}>
-            <TopBar>
-            </TopBar>
-        </FlexView>
-        <FlexView grow>
-            <Card noShadow style={{flex:1}}>
-                {props.children}
-            </Card>
-        </FlexView>
-    </FlexView>
+    <Flex column>
+        <Flex style={{height:"60px",zIndex:"1"}}>
+            <TopBar/>
+        </Flex>
+        <Flex flex={1}>
+            {props.children}
+        </Flex>
+    </Flex>
 )
 
 export default Page;

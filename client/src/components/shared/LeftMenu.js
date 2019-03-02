@@ -1,6 +1,8 @@
 import React from 'react'
 import {withTheme} from 'reakit'
-import {  Backdrop, Sidebar,Block } from "reakit";
+import {  Backdrop, Sidebar,Block } from "reakit"
+import {MdMenu,MdClose} from "react-icons/md"
+import {Toolbar} from "reakit"
 import {Button} from '../util/Buttons'
 const LeftMenu = (props)=>(
 
@@ -11,23 +13,24 @@ const LeftMenu = (props)=>(
             
             <Button
                 use={Sidebar.Toggle} 
-                {...sidebar} 
-                height="48px" 
-                padding="5px" 
-                width="48px"
-                margin="5px 10px"
+                {...sidebar}
                 borderRadius="50%"
-                palette='secondary'
-                tone={1}
-                fontSize = "1.2em"
+                palette="transparent"
                 >
                 {
-                    (sidebar.visible)? <span>&#10006;</span> : <span>&equiv;</span>
+                    (sidebar.visible)?  
+                        <Toolbar.Focusable use={MdClose} fontSize={18}/>
+                        :
+                        <Toolbar.Focusable use={MdMenu} fontSize={18}/>
                 }
             </Button>
             <Backdrop fade use={Sidebar.Hide}  {...sidebar} zIndex={-2}/>
             <Sidebar slide align="left" {...sidebar} zIndex={-1} minWidth="200px" >
-                
+                <Toolbar vertical>
+                    <Toolbar.Content marginTop={60} gridAutoRows={'max-content'}>
+                       
+                    </Toolbar.Content>
+                </Toolbar>
             </Sidebar>
         </Block>
     )}

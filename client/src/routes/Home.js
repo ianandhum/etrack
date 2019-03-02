@@ -14,7 +14,6 @@ import Card from '../components/util/Card';
 class Home extends Component{
     render(){
         
-        let minimized= true
         return(
             <>    
                 <ShortHelmet/>
