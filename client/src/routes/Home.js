@@ -24,18 +24,31 @@ class Home extends Component{
                             
                             <Card
                                 style={{
-                                    position:"absolute",
+                                    position:"fixed",
                                     width:"96%",
                                     margin:"0px 2%",
                                     bottom:0,
                                     borderTopLeftRadius:"5px",
-                                    borderTopRightRadius:"5px"
+                                    borderTopRightRadius:"5px",
                                       
                                 }}
                             >
 
-                                <FlexView>
-                                    <Group style={{padding:"0 10px",margin:"10px"}}>
+                                <FlexView column style={{
+                                    height:"200px",
+                                    overflowY:"auto"
+                                }}>
+                                    <Group vertical style={{padding:"0 10px",margin:"10px"}}>
+                                        <Button palette='primary' tone={-1} >Awesome</Button> 
+                                        <Button use={Link} to = "/d"  >Awesome</Button>
+                                        <Button use={Link} to = "/vf"  >Awesome</Button>
+                                    </Group>
+                                    <Group vertical style={{padding:"0 10px",margin:"10px"}}>
+                                        <Button palette='primary' tone={-1} >Awesome</Button> 
+                                        <Button use={Link} to = "/d"  >Awesome</Button>
+                                        <Button use={Link} to = "/vf"  >Awesome</Button>
+                                    </Group>
+                                    <Group vartical style={{padding:"0 10px",margin:"10px"}}>
                                         <Button palette='primary' tone={-1} >Awesome</Button> 
                                         <Button use={Link} to = "/d"  >Awesome</Button>
                                         <Button use={Link} to = "/vf"  >Awesome</Button>

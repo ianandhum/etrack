@@ -4,6 +4,8 @@ import Card from '../util/Card'
 import LeftMenu from './LeftMenu';
 import { Heading, Toolbar, withTheme,Avatar,InlineBlock, Button, Popover} from "reakit";
 import {theme} from 'styled-tools'
+import { MdPersonOutline } from 'react-icons/md'
+import {Link} from "react-router-dom"
 
 
 const TopBar = (props)=>(
@@ -19,17 +21,26 @@ const TopBar = (props)=>(
         <Popover.Container>
                 {popover => (
                     <InlineBlock relative>
-                    <Button use={Popover.Toggle} {...popover} background="transparent" borderRadius = "50%" padding="0px">
-                        <Toolbar.Focusable
-                            use={Avatar}
-                            src="https://placekitten.com/150/200"
-                        />
-                    </Button>
-                    <Popover fade slide expand hideOnClickOutside {...popover}>
-                        <FlexView column hAlignContent="center" style={{width:"200px"}}>
-                            Add List here
-                        </FlexView>
-                    </Popover>
+                        <Button use={Popover.Toggle} {...popover} background="transparent" borderRadius = "50%" padding="0px">
+                            <Toolbar.Focusable
+                                use={Avatar}
+                                src="https://placekitten.com/150/200"
+                                height={30}
+                                width={30}
+                                
+                            />
+                        </Button>
+                        <Popover use={Card}  fade slide expand hideOnClickOutside {...popover} width={200}>
+                            <FlexView column grow>
+                                <FlexView use={Link} to="/" hAlignContent={"center"}>
+                                    <MdPersonOutline fontSize={18}/>
+                                    <div style={{flex:"1"}}>    
+                                        &nbsp;Person name
+                                    </div>
+                                </FlexView>
+                                
+                            </FlexView>
+                        </Popover>
                     </InlineBlock>
                 )}
                 </Popover.Container>
