@@ -62,7 +62,7 @@ const SectionLink = styled(Link)`
   }
 `;
 
-const renderList = (list,location)=>{
+const renderMenu = (list,location)=>{
 
     return (
         <MenuList marginTop={60} >
@@ -139,8 +139,7 @@ const listData = [
     
 const LeftMenu = (props)=>(
 
-    <Sidebar.Container
-    >
+    <Sidebar.Container>
     {sidebar => (
         <Block>
             
@@ -159,7 +158,7 @@ const LeftMenu = (props)=>(
             </Button>
             <Backdrop fade use={Sidebar.Hide}  {...sidebar} zIndex={-2}/>
             <Sidebar slide align="left" {...sidebar} zIndex={-1} width="220px">
-               {renderList(listData,props.location)}
+               {renderMenu(listData,props.location)}
             </Sidebar>
         </Block>
     )}

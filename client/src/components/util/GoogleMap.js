@@ -22,7 +22,11 @@ export class GoogleMap extends Component {
   }
 }
 
+const LoadingContainer = ()=>(
+  <Loading style={{height:"50vh"}}/>
+)
+
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
-  LoadingContainer: Loading
+  LoadingContainer: LoadingContainer
 })(GoogleMap)

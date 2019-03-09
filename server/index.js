@@ -25,9 +25,9 @@ const app = express();
 // express-busboy to parse multipart/form-data
 bb.extend(app);
 
-// allow-cors
+// dis-allow-cors
 app.use(function(req,res,next){
-  res.header("Access-Control-Allow-Origin", "*");
+  //res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Content-Type", "application/json");
   next();
