@@ -1,9 +1,9 @@
-var Post = require('../models/post');
+var User = require('../models/user');
 
 module.exports = {
     
-    getPosts:function(req, res) {
-        Post.find().sort('-dateAdded').exec((err, posts) => {
+    getUsers:function(req, res) {
+        User.find().exec((err, posts) => {
             if (err) {
             res.status(500).send(err);
             }

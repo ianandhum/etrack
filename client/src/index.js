@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Css Style provider
-import {ThemeProvider} from 'styled-components'
+import { Provider as ThemeProvider} from 'reakit'
 
 // Redux  and router 
 import { Provider } from 'react-redux'
@@ -17,7 +17,7 @@ import initStore from './data/store.init'
 import Routes from './routes'
 
 //themes
-import {defaultTheme,GlobalStyle} from './style/index'
+import {defaultTheme} from './style/index'
 
 
 
@@ -27,9 +27,8 @@ const store = configureStore(initStore)
 
 const Root  = (props)=>(
     <>
-        <GlobalStyle/>
         <Provider store={store}>
-            <ThemeProvider theme = {defaultTheme}> 
+            <ThemeProvider theme={defaultTheme}> 
                 <ConnectedRouter history={history}> 
                     <>
                         <Routes/>
