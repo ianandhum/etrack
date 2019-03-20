@@ -7,7 +7,7 @@ import TopBar from './TopBar'
 
 const Page = (props)=>(
     <Flex column>
-        <Flex style={{height:"60px",zIndex:"1"}}>
+        <Flex style={{height:"50px",zIndex:"1"}}>
             <TopBar/>
         </Flex>
         <Flex flex={1}>

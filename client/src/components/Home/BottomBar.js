@@ -8,7 +8,7 @@ const ScrollableBlock = styled(Block)`
     flex:1;
     display: flex;
     margin:0;
-    padding:20px !important;
+    padding:10px !important;
 `
 const BottomBar =(props)=>(
 
@@ -21,7 +21,7 @@ const BottomBar =(props)=>(
             padding="0px"
             defaultSize={{
                 width:"96%",
-                height:200,
+                height:250,
             }}
             maxWidth="96%"
             minWidth="96%"
@@ -32,24 +32,28 @@ const BottomBar =(props)=>(
         <Flex column height="100%" margin={0}>
             <FlexView>
                 <FlexView grow>
-                    <Group style={{padding:"0 10px",margin:"10px"}}>
+                    <Group style={{padding:"0 5px",margin:"5px"}}>
                         <Button>All</Button> 
                         <Button tone={-1}>Delayed</Button>
                         <Button tone={-1}>On Time</Button>
                     </Group>
+                    <Group style={{padding:"0 5px",margin:"5px"}}>
+                    </Group>
                 </FlexView>
                 <FlexView hAlignContent="end">
-                    <Group style={{padding:"0 10px",margin:"10px"}}>
-                        <Button>New Task</Button>
+                    <Group style={{padding:"0 5px",margin:"5px"}}>
+                        <Button tone={-2}>View Report</Button>
+                        <Button tone={1}>New Task</Button>
+                            
                     </Group>
                 </FlexView>
             </FlexView>
             <FlexView grow style={{overflow:"auto hidden"}}>
 
                 <ScrollableBlock>
-                    <UserTaskCard/>
-                    <UserTaskCard/>
                     <UserTaskCard active/>
+                    <UserTaskCard/>
+                    <UserTaskCard/>
                     <UserTaskCard/>
                 </ScrollableBlock>
             </FlexView>

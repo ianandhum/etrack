@@ -5,7 +5,8 @@ body {
   margin:0;
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color:${props=>props.theme.color};
-  background-color:${props=>props.theme.background}
+  background-color:${props=>props.theme.background};
+  font-size:13px;
 }
 *{
   box-sizing:border-box;

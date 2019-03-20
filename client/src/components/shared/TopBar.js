@@ -15,7 +15,7 @@ const TopBar = (props)=>(
             <LeftMenu/>
         </Toolbar.Content>
         <Toolbar.Content align="center" gridAutoColumns={'max-content'}>
-            <Heading fontSize={24} margin={0}>Etrack ANLON</Heading>
+            <Heading fontSize={20} margin={0}>Etrack ANLON</Heading>
         </Toolbar.Content>
         {props.children}
         <Toolbar.Content align="end">
@@ -26,8 +26,8 @@ const TopBar = (props)=>(
                             <Toolbar.Focusable
                                 use={Avatar}
                                 src="https://placekitten.com/150/200"
-                                height={30}
-                                width={30}
+                                height={25}
+                                width={25}
                                 
                             />
                         </Button>

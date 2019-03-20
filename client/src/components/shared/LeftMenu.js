@@ -148,12 +148,14 @@ const LeftMenu = (props)=>(
                 {...sidebar}
                 borderRadius="50%"
                 palette="transparent"
+                height={35}
+                width={35}
                 >
                 {
                     (sidebar.visible)?  
-                        <Toolbar.Focusable use={MdClose} fontSize={18}/>
+                        <Toolbar.Focusable use={MdClose} fontSize={16}/>
                         :
-                        <Toolbar.Focusable use={MdMenu} fontSize={18}/>
+                        <Toolbar.Focusable use={MdMenu} fontSize={16}/>
                 }
             </Button>
             <Backdrop fade use={Sidebar.Hide}  {...sidebar} zIndex={-2}/>
