@@ -7,7 +7,8 @@ module.exports = {
             if (err) {
             res.status(500).send(err);
             }
-            res.json({ posts });
+            
+            res.json({ posts ,user:req.user});
         })
     }
 };
