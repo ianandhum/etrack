@@ -3,12 +3,11 @@ import {withTheme} from 'reakit'
 import FlexView from 'react-flexview'
 import {Block,styled} from 'reakit';
 import {palette} from 'styled-tools'
-
-import GoogleMap from '../components/util/GoogleMap'
 import ShortHelmet from '../helpers/ShortHelmet';
 import Page from '../components/shared/Page'
 
 import BottomBar from '../components/Home/BottomBar'
+import MapLayout from '../components/Home/MapLayout'
 
 const GrayBlock = styled(Block)`
     min-height:calc( 100vh - 60px );
@@ -25,7 +24,7 @@ class Home extends Component{
                 <Page>
                     <FlexView column grow>
                         <GrayBlock>
-                            <GoogleMap/>
+                            <MapLayout/>
                             <BottomBar/>
                         </GrayBlock>
                     </FlexView>
@@ -35,4 +34,7 @@ class Home extends Component{
         )
     }
 }
+
+
+
 export default withTheme(Home)
