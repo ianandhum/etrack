@@ -4,8 +4,8 @@ import Card from '../util/Card'
 import LeftMenu from './LeftMenu';
 import { Heading, Toolbar, withTheme,Avatar,InlineBlock, Button, Popover,Flex} from "reakit";
 import {theme} from 'styled-tools'
-import { MdPerson ,MdLiveTv} from 'react-icons/md'
-import { FaLock} from 'react-icons/fa'
+import { MdPerson ,MdLiveTv} from 'react-icons/md/index.mjs'
+import { FaLock} from 'react-icons/fa/index.mjs'
 import {Link} from "react-router-dom"
 
 

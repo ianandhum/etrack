@@ -2,7 +2,7 @@ import React from 'react'
 import {withTheme,styled} from 'reakit'
 
 import { Toolbar, Backdrop, Sidebar,Block,List,Link} from "reakit"
-import {MdMenu,MdClose,MdLiveTv, MdPieChart,MdPeople,MdViewArray,MdGroup,MdSettings} from "react-icons/md"
+import {MdMenu,MdClose,MdLiveTv, MdPieChart,MdPeople,MdViewArray,MdGroup,MdSettings} from "react-icons/md/index.mjs"
 import {Link as RouterLink,withRouter} from 'react-router-dom'
 import {palette,ifProp} from 'styled-tools'
 import {Button} from '../util/Buttons'

@@ -3,6 +3,7 @@ import {withTheme} from 'reakit'
 import FlexView from 'react-flexview'
 import {Block,styled} from 'reakit';
 import {palette} from 'styled-tools'
+
 import GoogleMap from '../components/util/GoogleMap'
 import ShortHelmet from '../helpers/ShortHelmet';
 import Page from '../components/shared/Page'
@@ -18,7 +19,6 @@ const GrayBlock = styled(Block)`
 
 class Home extends Component{
     render(){
-        
         return(
             <>    
                 <ShortHelmet/>

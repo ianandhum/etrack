@@ -13,9 +13,20 @@ const _ButtonRounded = styled(_Button)`
 const _ButtonLarge = styled(_Button)`
   font-size: 20px;
 `;
+const _ButtonLink = styled(_Button)`
+  background:transparent;
+  color: #000;
+  padding:0;
+  &:hover{
+    box-shadow:none;
+    color:purple;
+
+  }
+`;
 
 
 export const Button = withTheme(_Button)
 
 export const ButtonRounded = withTheme(_ButtonRounded)
 export const ButtonLarge =  withTheme(_ButtonLarge)
+export const ButtonLink =  withTheme(_ButtonLink)
