@@ -2,7 +2,7 @@ import Faker from 'faker'
 
 export const _Profile=()=>{
     return {
-        avatar:"https://placekitten.com/"+(Math.random()*100)+"/"+(Math.random()*100),
+        avatar:"https://placekitten.com/"+parseInt((Math.random()*100)%100) +"/"+parseInt((Math.random()*100)%100),
         name:Faker.name.findName()
     }
 }

@@ -6,19 +6,13 @@ import Loading from '../util/Loading'
 export class MapLayout extends Component {
   
   render() {
-    
-    console.log([this.props.checkpoints[this.props.checkpoints.length-1],
-        this.props.destination])
-
+  
     return (
         <Map 
             google={this.props.google} 
             zoom={7} 
             disableDefaultUI={true}
-            initialCenter={{
-              lat: 11.721, 
-              lng: 78.65
-            }}
+            initialCenter={this.props.checkpoints[this.props.checkpoints.length-1]}
         >
           
               <Polyline
@@ -32,7 +26,7 @@ export class MapLayout extends Component {
                 icons= {[{
                   icon: {
                     path: 'M 0,-1 0,1',
-                    strokeOpacity: 1,
+                    strokeOpacity: 0.5,
                     scale: 4
                   },
                   offset: '0',
@@ -42,22 +36,23 @@ export class MapLayout extends Component {
 
               <Polyline
                 path={this.props.checkpoints}
-                strokeColor="#3c3"
-                strokeOpacity={1}
+                strokeColor="#51cc71"
+                strokeOpacity={0.6}
                 strokeWeight={5}
               />
               {
               this.props.checkpoints.map((latLng,index)=>(
-
-                  <Marker
-                    position={latLng}
-                    icon={{
-                    url: "/assets/current_location.svg",
-                    anchor: new this.props.google.maps.Point(16,16),
-                    scaledSize:new this.props.google.maps.Size(32,32)
-                    }}
-                  />
-              ))
+                    <Marker
+                      position={latLng}
+                      icon={{
+                      url: "/assets/current_location.svg",
+                      anchor: new this.props.google.maps.Point(16,16),
+                      scaledSize:new this.props.google.maps.Size(32,32),
+                      label:(this.props.checkpoints.length-1 === index )?"Current Location":""
+                      }}
+                    />
+                  )
+                )
               }
               <Marker
                   position={this.props.to}
