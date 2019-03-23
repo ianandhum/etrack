@@ -8,6 +8,7 @@ import Page from '../components/shared/Page'
 
 import BottomBar from '../components/Home/BottomBar'
 import MapLayout from '../components/Home/MapLayout'
+import FloatMenu from '../components/Home/FloatMenu';
 
 const GrayBlock = styled(Block)`
     min-height:calc( 100vh - 60px );
@@ -23,7 +24,8 @@ class Home extends Component{
                 <ShortHelmet/>
                 <Page>
                     <FlexView column grow>
-                        <GrayBlock>
+                        <GrayBlock position="relative">
+                            <FloatMenu/>
                             <MapLayout/>
                             <BottomBar/>
                         </GrayBlock>

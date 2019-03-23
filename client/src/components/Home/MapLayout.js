@@ -6,13 +6,17 @@ import Loading from '../util/Loading'
 export class MapLayout extends Component {
   
   render() {
-  
+    console.log(this.props)
     return (
         <Map 
             google={this.props.google} 
             zoom={7} 
             disableDefaultUI={true}
-            initialCenter={this.props.checkpoints[this.props.checkpoints.length-1]}
+            center={this.props.checkpoints[this.props.checkpoints.length-1]}
+            initCenter={{
+              lat:11.3,
+              lng:76.5
+            }}
         >
           
               <Polyline

@@ -54,7 +54,7 @@ export const _GPSTrace=(num)=>{
     
     const randomSplit=()=>{
         const rand = Math.random()
-        return (rand>0.5)? rand:rand*-1;
+        return (rand>0.5)? rand:rand*rand;
     }
     const getLocationNear=(latLng)=>{
         return {

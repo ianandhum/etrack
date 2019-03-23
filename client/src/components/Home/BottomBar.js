@@ -1,10 +1,9 @@
 import React from 'react'
 import Resizable from 're-resizable'
 import FlexView from 'react-flexview'
-import {styled,Group,Button,Block,Card,Flex} from 'reakit'
+import {styled,Block,Card,Flex} from 'reakit'
 import {connect} from 'react-redux'
 
-import {initTasks} from '../../data/actions/active_tasks'
 import UserTaskCard from './UserTaskCard'
 
 
@@ -14,7 +13,7 @@ const ScrollableBlock = styled(Block)`
     margin:0;
     padding:10px !important;
 `
-const LightHeader = styled('h4')`
+const LightHeader = styled('h3')`
     font-weight:500;
     margin:1.1rem;
 `
@@ -22,50 +21,21 @@ const BottomBar =(props)=>(
 
         <Card
             position="fixed"
-            margin="0px 2%"
+            margin="0"
             bottom={0}
-            borderTopLeftRadius="5px"
-            borderTopRightRadius="5px"
             padding="0px"
             defaultSize={{
-                width:"96%",
+                width:"100%",
                 height:250,
             }}
-            maxWidth="96%"
-            minWidth="96%"
             use={Resizable}
 
         >
 
         <Flex column height="100%" margin={0}>
-            {/*
-            <FlexView>
-                <FlexView grow>
-                    <Group style={{padding:"0 5px",margin:"5px"}}>
-                        <Button>All</Button> 
-                        <Button tone={-1}>Delayed</Button>
-                        <Button tone={-1}>On Time</Button>
-                    </Group>
-                    <Group style={{padding:"0 5px",margin:"5px"}}>
-                    </Group>
-                </FlexView>
-                <FlexView hAlignContent="end">
-                    <Group style={{padding:"0 5px",margin:"5px"}}>
-                        <Button tone={-2} onClick = {props.updateTasks}>Update</Button>
-                        <Button tone={1}>New Task</Button>
-                    </Group>
-                </FlexView>
-            </FlexView>
-            */}
             <FlexView style={{margin:"0px 7px 5px"}}>
                 <FlexView grow>
-                    <LightHeader>Live View</LightHeader>
-                </FlexView>
-                <FlexView hAlignContent="end">
-                    <Group style={{padding:"0 5px",margin:"5px"}}>
-                        <Button tone={-2} onClick = {props.updateTasks}>Update</Button>
-                        <Button tone={1}>New Task</Button>
-                    </Group>
+                    <LightHeader>Live View - Active Tasks</LightHeader>
                 </FlexView>
             </FlexView>
             <FlexView grow style={{overflow:"auto hidden"}}>
@@ -92,13 +62,4 @@ const mapStateToProps = (state, ownProps) => {
         activeIndex:state.tasks.view.active.activeIndex
     }
   }
-  
-  const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      updateTasks: () => {
-        dispatch(initTasks())
-      }
-    }
-  }
-
-export default connect(mapStateToProps,mapDispatchToProps)(BottomBar)
+export default connect(mapStateToProps)(BottomBar)
