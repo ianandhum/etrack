@@ -1,11 +1,9 @@
 import React from 'react'
 import {Flex,Block} from 'reakit'
 import {connect} from 'react-redux'
-import { Dropdown } from "@bit/primefaces.primereact.dropdown";
+import Select from 'react-select'
 
 import { selectClient } from '../../data/actions/clients';
-
-import 'react-table/react-table.css'
 
 class Selector extends React.Component{
     constructor(props){
@@ -15,13 +13,18 @@ class Selector extends React.Component{
         }
     }
     
+    componentWillMount(){
+        this.props.selectClient(-1)
+    }
+
+
     render(){
         let clientList = this.props.clients.map((item,index)=>({
             label:item.name,
             value:index
         }))
         return(
-            <Block flexGrow={1}>
+            <Block>
                 <Flex flexGrow={1} background="#f8f8f8" borderRadius="4px" padding="10px 5px">
                     <Flex flexGrow={1} column>
                         <Flex flexGrow={1} alignItems="center" fontWeight="400"  padding="0px 5px" fontSize="1.1em"> 
@@ -32,16 +35,17 @@ class Selector extends React.Component{
                         <Flex flexGrow={1} fontWeight="500" alignItems="center" padding="0px 8px"> 
                             Client Name:
                         </Flex>
-                        <Dropdown
-                            style={{ width: 300 }}
-                            value={this.state.clientListIndex}
-                            options={clientList}
-                            onChange={e => {
-                                this.setState({ clientListIndex: e.value })
-                                this.props.selectClient(e.value)
-                            }}
-                            placeholder='Select a Client'
-                        />
+                        <Block style={{width:300}}>
+                            <Select
+                                value={this.state.clientListIndex}
+                                options={clientList}MdInsertEmoticon
+                                onChange={item => {
+                                    this.setState({ clientListIndex: item })
+                                    this.props.selectClient(item.value)
+                                }}
+                                placeholder='Select a Client'
+                            />
+                        </Block>
                     </Flex>
                 </Flex>
             </Block>

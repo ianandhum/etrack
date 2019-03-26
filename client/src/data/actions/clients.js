@@ -7,6 +7,7 @@ export const INIT_CLIENTS = 'INIT_CLIENTS'
 export const BEGIN_FETCH_CLIENTS = 'BEGIN_FETCH_CLIENTS'
 export const FETCH_CLIENTS = 'FETCH_CLIENTS'
 export const VIEW_SELECT_CLIENT = 'VIEW_SELECT_CLIENT'
+export const SAVE_NEW_FENCE = 'SAVE_NEW_FENCE'
 
 //ACTION CREATORS
 export var initClients=function(){
@@ -41,5 +42,11 @@ export var selectClient = function(index){
     return {
         type:VIEW_SELECT_CLIENT,
         index
+    }
+}
+export var saveFence = function(fence){
+    return {
+        type:SAVE_NEW_FENCE,
+        fence
     }
 }

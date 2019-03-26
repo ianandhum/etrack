@@ -15,6 +15,9 @@ export default {
         loaded:false,
         waiting:false,
         clients:{},
-        selectedIndex:0
+        view:{
+            selectedIndex:-1,
+            fenceCoords:[]
+        }
     }
 }

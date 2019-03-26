@@ -3,7 +3,8 @@ import {
     INIT_CLIENTS,
     BEGIN_FETCH_CLIENTS,
     FETCH_CLIENTS,
-    VIEW_SELECT_CLIENT
+    VIEW_SELECT_CLIENT,
+    SAVE_NEW_FENCE
 } from '../actions/clients'
 import {fromJS} from 'immutable'
 
@@ -24,8 +25,10 @@ export default function(state = initState,action ){
                                     .toJS()
         
         case VIEW_SELECT_CLIENT:
-            return iState.setIn(['selectedIndex'],action.index).toJS()
-            
+            return iState.setIn(['view','selectedIndex'],action.index).toJS()
+        case SAVE_NEW_FENCE:
+            return iState.setIn(['view','fenceCoords'],action.fence).toJS()
+                                
         default:
             return state
     }

@@ -22,6 +22,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "react-select": "^2.4.2",
     "react-spinners": "^0.5.1",
     "react-table": "^6.9.2",
     "reakit": "^0.16.0",
@@ -37,7 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "react-scripts build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
-    "now-build": "npm config set '@bit:registry' https://node.bit.dev && react-scripts build"
+    "now-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

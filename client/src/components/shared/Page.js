@@ -5,7 +5,7 @@ import TopBar from './TopBar'
 
 
 const Page = (props)=>(
-    <Flex column flexShrink={1} maxHeight="100vh">
+    <Flex column minHeight="100vh" maxHeight="100vh">
         <Flex style={{height:"50px",zIndex:"1"}}>
             <TopBar/>
         </Flex>
