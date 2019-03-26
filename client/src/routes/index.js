@@ -6,6 +6,8 @@ import {GlobalStyle} from '../style/index'
 
 //routes
 import Home from './Home'
+import TaskView from './TaskView'
+import ClientsView from './ClientsView'
 import RouteNotFound from './RouteNotFound'
 
 
@@ -14,6 +16,8 @@ const Routes = (props)=>(
         <GlobalStyle/>
         <Switch>
             <Route exact path="/" component = {Home} />
+            <Route exact path="/clients" component = {ClientsView} />
+            <Route exact path="/task/:task_id" component = {TaskView} />
             <Route render ={(props)=> <RouteNotFound {...props} />} />
         </Switch>
     </>

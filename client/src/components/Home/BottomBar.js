@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 import UserTaskCard from './UserTaskCard'
 
 
-const ScrollableBlock = styled(Block)`
+export const ScrollableBlock = styled(Block)`
     flex:1;
     display: flex;
     margin:0;
@@ -28,8 +28,8 @@ const BottomBar =(props)=>(
                 width:"100%",
                 height:250,
             }}
+            maxWidth="100vw"
             use={Resizable}
-
         >
 
         <Flex column height="100%" margin={0}>

@@ -1,4 +1,3 @@
-import axios from 'axios'
 //React
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -41,6 +40,3 @@ const Root  = (props)=>(
 )
 
 ReactDOM.render(<Root/>,document.getElementById('root'));
-
-
-axios.get("https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCI3cDduwloUnVSfREo-6wuRYTMjOHcQjc").then(e=>console.log(e))

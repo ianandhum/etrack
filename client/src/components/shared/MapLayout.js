@@ -3,20 +3,47 @@ import {Map, GoogleApiWrapper,Polyline, Marker} from 'google-maps-react';
 import {connect} from 'react-redux'
 
 import Loading from '../util/Loading'
-export class MapLayout extends Component {
+import { vSetActiveTask } from '../../data/actions/active_tasks';
+
+class MapLayout extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      center:{lat:0,lng:0}
+    }
+  }
+  autoCenter(checkpoints){
+    let center = this.props.checkpoints[this.props.checkpoints.length-1];
+    if(checkpoints){
+      center = checkpoints[checkpoints.length-1];
+    }
+    var bounds = new this.props.google.maps.LatLngBounds();
+    var points = this.props.checkpoints;
+    points.push(this.props.to);
+    for (var i = 0; i < points.length; i++) {
+      bounds.extend(points[i]);
+    }
+
+    this.setState({
+      center:center,
+      bounds:bounds
+    })
   
+  }
+  componentDidMount(){
+    this.autoCenter();
+  }
+  componentWillReceiveProps(newProps){
+    this.autoCenter(newProps.checkpoints);
+  }
   render() {
-    console.log(this.props)
     return (
         <Map 
-            google={this.props.google} 
-            zoom={7} 
+            google={this.props.google}
             disableDefaultUI={true}
-            center={this.props.checkpoints[this.props.checkpoints.length-1]}
-            initCenter={{
-              lat:11.3,
-              lng:76.5
-            }}
+            bounds={this.state.bounds}
+            center={this.state.center}
+            
         >
           
               <Polyline
@@ -37,7 +64,6 @@ export class MapLayout extends Component {
                   repeat: '20px'
                 }]}
               />
-
               <Polyline
                 path={this.props.checkpoints}
                 strokeColor="#51cc71"
@@ -79,15 +105,37 @@ const LoadingContainer = ()=>(
 const WrappedMap = GoogleApiWrapper({
     apiKey: process.env.REACT_APP_GOOGLE_MAP_API_KEY,
     LoadingContainer: LoadingContainer
-  })(MapLayout)
+})(MapLayout)
+
+
+
 
 
 const mapStateToProps = (state, ownProps) => {
-    const activeRouteData = state.tasks.active[state.tasks.view.active.activeIndex].checkpointsRaw
+    
+    var activeRouteData = {}
+    if(ownProps.taskId){
+      activeRouteData =(state.tasks.view.selected.id)?state.tasks.view.selected.checkpointsRaw:{}
+    }
+    else if(state.tasks.view.active.activeIndex>=0 ){
+      activeRouteData = state.tasks.active[state.tasks.view.active.activeIndex].checkpointsRaw
+    }
+    
     return {
         checkpoints:activeRouteData.checkpoints,
-        to:activeRouteData.to
+        to:activeRouteData.to,
+        loaded:!state.tasks.view.waiting
     }
+
 }
 
-export default  connect(mapStateToProps)(WrappedMap)
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    mapReadyHandle: () => {
+      dispatch(vSetActiveTask(0))
+    }
+  }
+}
+
+
+export default  connect(mapStateToProps,mapDispatchToProps)(WrappedMap)

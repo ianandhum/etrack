@@ -3,10 +3,10 @@ import { Block,styled,Tooltip } from 'reakit';
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import FlexView from 'react-flexview'
-import { MdRefresh,MdAdd,MdList } from 'react-icons/md';
+import { MdRefresh,MdAdd} from 'react-icons/md';
 
 import {CircleButton} from "../util/Buttons"
-import {initTasks} from '../../data/actions/active_tasks'
+import {fetchTask} from '../../data/actions/active_tasks'
 
 const BlockRight = styled(Block)`
     position:absolute;
@@ -37,10 +37,6 @@ class FloatMenu extends React.Component{
                         <MdAdd fontSize = {25}/>
                         <Tooltip placement="left">Assign New Task</Tooltip>
                     </MenuButton>
-                    <MenuButton  palette="secondary" tone={1} onClick = {this.props.updateTasks}>
-                        <MdList fontSize = {25}/>
-                        <Tooltip placement="left">Show history</Tooltip>
-                    </MenuButton>
                 </FlexView>
             </BlockRight>
 
@@ -51,7 +47,7 @@ class FloatMenu extends React.Component{
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
       updateTasks: () => {
-        dispatch(initTasks())
+        dispatch(fetchTask())
       }
     }
   }

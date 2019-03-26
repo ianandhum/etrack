@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bit/primefaces.primereact.dropdown": "^3.1.0",
+    "@bit/primefaces.primereact.internal.stylelinks": "^3.1.0",
     "axios": "^0.18.0",
     "connected-react-router": "^6.3.1",
     "faker": "^4.1.0",
@@ -21,9 +23,11 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "react-spinners": "^0.5.1",
+    "react-table": "^6.9.2",
     "reakit": "^0.16.0",
     "reakit-theme-default": "^0.2.0",
     "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "styled-tools": "^1.7.1",
     "webpack-bundle-analyzer": "^3.1.0"
   },
@@ -32,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "analyze":"react-scripts build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
+    "analyze": "react-scripts build --stats && webpack-bundle-analyzer build/bundle-stats.json -m static -r build/bundle-stats.html -O",
     "now-build": "react-scripts build"
   },
   "eslintConfig": {

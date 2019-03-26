@@ -1,22 +1,13 @@
 import React,{Component} from 'react'
 import {withTheme} from 'reakit'
 import FlexView from 'react-flexview'
-import {Block,styled} from 'reakit';
-import {palette} from 'styled-tools'
 import ShortHelmet from '../helpers/ShortHelmet';
 import Page from '../components/shared/Page'
 
 import BottomBar from '../components/Home/BottomBar'
-import MapLayout from '../components/Home/MapLayout'
+import MapLayout from '../components/shared/MapLayout'
 import FloatMenu from '../components/Home/FloatMenu';
-
-const GrayBlock = styled(Block)`
-    min-height:calc( 100vh - 60px );
-    width:calc( 100vw);
-    position:relative;
-    background-color:${palette('grayscale',-2)};
-`
-
+import GrayBlock from '../components/util/GrayBlock'
 class Home extends Component{
     render(){
         return(
@@ -30,7 +21,6 @@ class Home extends Component{
                             <BottomBar/>
                         </GrayBlock>
                     </FlexView>
-                    
                 </Page>
             </>
         )

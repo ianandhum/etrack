@@ -1,6 +1,6 @@
 import React from 'react'
 import FlexView from 'react-flexview'
-import {SyncLoader} from 'react-spinners'
+import SyncLoader from 'react-spinners/SyncLoader'
 import {withTheme} from 'reakit'
 const Loading  = (props)=>(
     <FlexView grow column vAlignContent ="center" hAlignContent="center" style={props.style}>

@@ -16,7 +16,7 @@ export const _Profiles=(num)=>{
 export const _CheckPoint=()=>{
     return {
         location:Faker.helpers.createCard().address.city,
-        datetime:Faker.date.recent().toLocaleDateString()
+        datetime:Faker.date.recent().toDateString()
     }
 }
 
@@ -31,12 +31,13 @@ export const _CheckPoints=(num)=>{
 export const _Task=()=>{
     const routeLimit= 3 + parseInt(Math.random()*100) % 10;
     return {
+        id:parseInt(Math.random()*10000),
         date:Faker.date.recent().toLocaleDateString(),
         status: !!(Math.random()>0.5),
         begunFrom: Faker.helpers.createCard().address.city+ " " +Faker.helpers.createCard().address.country + " " +Faker.helpers.createCard().address.state,
         to:Faker.helpers.createCard().address.city+ " " +Faker.helpers.createCard().address.country + " " +Faker.helpers.createCard().address.state,
         checkpoints:_CheckPoints(routeLimit),
-        deadLine:Faker.date.future().toLocaleDateString(),
+        deadLine:Faker.date.future().toDateString(),
         user:_Profile(),
         checkpointsRaw:_GPSTrace(routeLimit)
     }
@@ -54,7 +55,7 @@ export const _GPSTrace=(num)=>{
     
     const randomSplit=()=>{
         const rand = Math.random()
-        return (rand>0.5)? rand:rand*rand;
+        return (rand<0.3)? rand:rand/10;
     }
     const getLocationNear=(latLng)=>{
         return {
