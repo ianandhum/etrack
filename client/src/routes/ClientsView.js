@@ -1,7 +1,6 @@
 import React from 'react'
 import FlexView from 'react-flexview/lib';
 import {connect} from 'react-redux'
-import PrimereactStyle from '@bit/primefaces.primereact.internal.stylelinks';
 import {MdNotInterested} from 'react-icons/md'
 
 import ShortHelmet from "../helpers/ShortHelmet";
@@ -22,7 +21,6 @@ class ClientView extends React.Component{
         return (
             <>
                 <ShortHelmet title = {"Employee Tracker - Clients"} />
-                <PrimereactStyle/>
                 <Page noScroll>
                     <FlexView column grow>
                         <FlexView style={{margin:"3% 3% 0"}}>
