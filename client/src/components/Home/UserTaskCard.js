@@ -83,7 +83,7 @@ export class CheckPoints extends React.Component{
     render(){
 
         return (
-        <Card flex="1" borderLeft={(!this.props.details)?"1px dashed":"0"} overflowY = "hidden" background='transparent' borderColor={palette('border')}>
+        <Card flex="1" borderLeft={(!this.props.details)?"1px dashed":"0"} overflowY = "auto" background='transparent' borderColor={palette('border')}>
             <Flex flex={1} as='h4' style={{marginTop:"0"}}>
                 <div style={{flexGrow:1,padding:"3px 0px"}}>
                     Recent Checkpoints
@@ -128,7 +128,7 @@ class  UserTaskCard extends React.Component{
                 width={this.props.active ? "600px":"300px"}  
                 padding="0px" 
                 margin="5px 10px 0" 
-                overflowY="auto">
+               display="flex">
 
                 <FlexView grow style={{minHeight:"80%"}} >
                     <UserInfo task ={this.props.task}/>
