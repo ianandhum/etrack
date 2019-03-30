@@ -5,7 +5,13 @@ export const _Client=()=>{
         name:Faker.name.findName(),
         city:Faker.helpers.createCard().address.city,
         state:Faker.helpers.createCard().address.state,
-        country:Faker.helpers.createCard().address.country
+        country:Faker.helpers.createCard().address.country,
+        pincode:Faker.helpers.createCard().address.zipcode,
+        phone:Faker.phone.phoneNumber(),
+        area:"SOUTH",
+        territory:"S2",
+        code:parseInt(Math.random()*1000),
+        sector:"1C" 
     }
 }
 export const _Clients=(num)=>{

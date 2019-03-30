@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {Map, GoogleApiWrapper,Polyline, Marker} from 'google-maps-react';
 
 import Loading from './Loading'
+import MapDarkStyle from './MapDarkStyle';
 export class GoogleMap extends Component {
   
   render() {
@@ -11,6 +12,7 @@ export class GoogleMap extends Component {
             google={this.props.google} 
             zoom={7} 
             disableDefaultUI={true}
+            styles={MapDarkStyle}
         >
           
               

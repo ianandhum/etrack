@@ -8,6 +8,7 @@ import Page from '../components/shared/Page';
 import Loading from '../components/util/Loading'
 import ClientSelector from '../components/ClientsView/Selector'
 import GeoFenceMap from '../components/ClientsView/GeoFenceMap'
+import ClientCard from '../components/ClientsView/ClientCard'
 
 import { initClients,fetchClients } from '../data/actions/clients';
 
@@ -44,11 +45,12 @@ class ClientView extends React.Component{
                                             <GeoFenceMap/>
                                         </FlexView>
                                         <FlexView grow>
-
+                                            <ClientCard client={this.props.activeClient}/>
                                         </FlexView>
                                     </FlexView>
 
                                     :
+
                                     <FlexView column grow vAlignContent="center" hAlignContent="center">
                                         <MdNotInterested fontSize="6em"/>
                                         <h3>No Client Selected</h3>
@@ -71,7 +73,9 @@ const mapStateToProps = (state, ownProps) => {
         waiting:state.client.waiting,
         loaded:state.client.loaded,
         clients:state.client.clients,
-        activeClientIndex:state.client.view.selectedIndex
+        activeClientIndex:state.client.view.selectedIndex,
+        activeClient:(state.client.view.selectedIndex>=0)?
+                        state.client.clients[state.client.view.selectedIndex]:null
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -1,7 +1,7 @@
 
 var express = require('express');
 
-var postController = require('../controllers/user.controller');
+var postController = require('../controllers/client.controller');
 
 var isAuthenticated = require('../helpers/auth/isAuthenticated')
 

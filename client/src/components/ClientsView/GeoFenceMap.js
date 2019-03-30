@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import Loading from '../util/Loading'
 import FloatMenu from './FloatMenu'
+import GeoCodeView from './GeoCodeView'
 import { saveFence } from '../../data/actions/clients';
 
 class GeoFenceMap extends Component {
@@ -16,7 +17,9 @@ class GeoFenceMap extends Component {
     this.onClickMap = this.onClickMap.bind(this)
     this.clearFence = this.clearFence.bind(this)
     this.undo = this.undo.bind(this)
+    this.geoCoder = null;
   }
+
   
   onClickMap(props,map,event){
         this.setState((prevState)=>({
@@ -38,7 +41,12 @@ class GeoFenceMap extends Component {
         }
     })
   }
-
+  componentWillMount(){
+    this.geoCoder = new this.props.google.maps.Geocoder()
+  }
+  componentWillUnmount(){
+    this.geoCoder = null
+  }
   render() {
     return (
         <>
@@ -46,12 +54,14 @@ class GeoFenceMap extends Component {
                 showSave = {this.state.dirty} 
                 save= {()=>this.props.saveFence(this.state.fenceCoords)} 
                 clearAll = {this.clearFence}/>
-
+            
             <Map 
                 google={this.props.google}
                 disableDefaultUI={true}
                 onClick={this.onClickMap}
+                mapTypeControl= {true}
             >
+                <GeoCodeView/>
                 <Polygon
                     paths={this.state.fenceCoords}
                     strokeColor="#333"

@@ -1,9 +1,9 @@
-var User = require('../models/user');
+var Client = require('../models/client');
 
 module.exports = {
     
     getUsers:function(req, res) {
-        User.find().exec((err, posts) => {
+        Client.find().exec((err, posts) => {
             if (err) {
             res.status(500).send(err);
             }

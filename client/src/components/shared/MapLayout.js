@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import {Map, GoogleApiWrapper,Polyline, Marker} from 'google-maps-react';
 import {connect} from 'react-redux'
 
+import MapSilverStyle from '../util/MapSilverStyle'
 import Loading from '../util/Loading'
 import { vSetActiveTask } from '../../data/actions/active_tasks';
 
@@ -9,7 +10,8 @@ class MapLayout extends Component {
   constructor(props){
     super(props);
     this.state={
-      center:{lat:0,lng:0}
+      center:{lat:0,lng:0},
+      bounds:[]
     }
   }
   autoCenter(checkpoints){
@@ -43,7 +45,7 @@ class MapLayout extends Component {
             disableDefaultUI={true}
             bounds={this.state.bounds}
             center={this.state.center}
-            
+            styles={MapSilverStyle}
         >
           
               <Polyline

@@ -11,7 +11,7 @@ import {initTasks} from '../../data/actions/active_tasks'
 const BlockRight = styled(Block)`
     position:absolute;
     right:10px;
-    top:20px;
+    top:15px;
     z-index:1;
 `
 const MenuButton = styled(CircleButton)`

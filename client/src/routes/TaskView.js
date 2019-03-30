@@ -11,6 +11,8 @@ import GrayBlock from '../components/util/GrayBlock';
 import FloatMenu from '../components/TaskView/FloatMenu';
 
 import { fetchTask } from "../data/actions/active_tasks";
+
+import Loading from '../components/util/Loading'
 import UserCard from '../components/TaskView/UserCard';
 
 class TaskView extends React.Component{
@@ -26,30 +28,31 @@ class TaskView extends React.Component{
                 <ShortHelmet title = {"Employee Tracker - Task " + this.props.match.params.task_id } />
                 <Page>
                     <FlexView column grow>
-                        <FlexView grow>
-                            <GrayBlock 
-                                    defaultSize={{
-                                        width:"80vw",
-                                        height:"100%"
-                                    }} 
-                                    use={Resizable} 
-                                    position="relative"
-                                    maxHeight="100%"
-                                    overflow="hidden"
-                                    >
-                                <FloatMenu/>
-                                <MapLayout taskId ={this.props.match.params.task_id} />
-                            </GrayBlock>
-                            <FlexView height="100%" grow>
-                                {
-                                    !this.props.waiting ?
-                                    
-                                        <UserCard task = {this.props.task}/>
-
-                                    :
-                                        <div>Loading Info</div>
-                                }
-                            </FlexView>
+                        <FlexView grow style={{minHeight:"50vh"}}>
+                        {
+                            !this.props.waiting ?
+                           <>             
+                                <GrayBlock 
+                                        defaultSize={{
+                                            width:"80vw",
+                                            height:"100%"
+                                        }} 
+                                        use={Resizable} 
+                                        position="relative"
+                                        maxHeight="100%"
+                                        overflow="hidden"
+                                        >
+                                    <FloatMenu/>
+                                    <MapLayout taskId ={this.props.match.params.task_id} />
+                                </GrayBlock>
+                                <FlexView height="100%" grow>
+                                    <UserCard task = {this.props.task}/>
+                                </FlexView>
+                            </>
+                            :
+                            
+                            <Loading/>
+                        }
                         </FlexView>
                     </FlexView>
                 </Page>
