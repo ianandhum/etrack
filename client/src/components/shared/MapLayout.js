@@ -134,7 +134,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     mapReadyHandle: () => {
-      dispatch(vSetActiveTask(0))
+      //dispatch(vSetActiveTask(0))
     }
   }
 }

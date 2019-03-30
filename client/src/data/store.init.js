@@ -1,13 +1,13 @@
-import {_Tasks} from './mock/tasks'
-let tasks = _Tasks(3)
 export default {
     tasks:{
-        active:tasks,
+        active:[],
+        loaded:false,
+        tasks:[],
         view:{
             active:{
-                activeIndex:0
+                activeIndex:-1
             },
-            selected:tasks[0],
+            selected:null,
             waiting:true
         }
     },
