@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 
 import MapSilverStyle from '../util/MapSilverStyle'
 import Loading from '../util/Loading'
-import { vSetActiveTask } from '../../data/actions/active_tasks';
 
 class MapLayout extends Component {
   constructor(props){

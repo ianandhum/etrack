@@ -31,7 +31,7 @@ class ClientCard extends React.Component{
                     <Block flexGrow={1}> {this.props.client.territory} </Block>
                 </Card>
                 <Card use={Flex}  margin="0 6px 8px">
-                    <Block flexBasis={50} fontWeight='bold'>4 digit code</Block>
+                    <Block flexBasis={50} fontWeight='bold'>Code</Block>
                     <Block flexGrow={1}> {this.props.client.code} </Block>
                 </Card>
                 <Card use={Flex}  margin="0 6px 8px">

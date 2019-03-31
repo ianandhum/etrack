@@ -26,7 +26,7 @@ class TaskView extends React.Component{
         return (
             <>
                 <ShortHelmet title = {"Employee Tracker - Task " + this.props.match.params.task_id } />
-                <Page>
+                <Page noScroll>
                     <FlexView column grow>
                         <FlexView grow style={{minHeight:"50vh"}}>
                         {
@@ -45,7 +45,7 @@ class TaskView extends React.Component{
                                     <FloatMenu/>
                                     <MapLayout taskId ={this.props.match.params.task_id} />
                                 </GrayBlock>
-                                <FlexView height="100%" grow>
+                                <FlexView height="100%" grow style={{overflowY:"auto"}}>
                                     <UserCard task = {this.props.task}/>
                                 </FlexView>
                             </>

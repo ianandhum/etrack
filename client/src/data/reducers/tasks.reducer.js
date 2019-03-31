@@ -23,7 +23,8 @@ export default function(state = initState.tasks,action ){
             return iState.setIn(['active'],action.active)
                             .setIn(['loaded'],true)
                                 .setIn(['view','active','activeIndex'],0)
-                                    .toJS()
+                                .   setIn(['view','selected'],action.active[0])
+                                        .toJS()
         case VIEW_SET_ACTIVE_TASK:
             return iState.setIn(['view','active','activeIndex'],action.index).toJS()
 
@@ -41,13 +42,13 @@ export default function(state = initState.tasks,action ){
             });
         case BEGIN_FETCH_ALL_TASKS:
             return iState.setIn(['view','waiting'],true)
-                            .setIn(['view','loaded'],false)
+                            .setIn(['loaded'],false)
                                 .toJS()
             
         case WAIT_AND_SET_TASKS:
                 return iState.setIn(['all'],action.tasks)
                                 .setIn(['view','waiting'],false)
-                                    .setIn(['view','loaded'],true)
+                                    .setIn(['loaded'],true)
                                         .toJS()
         default:
             return state

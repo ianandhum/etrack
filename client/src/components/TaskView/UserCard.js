@@ -21,10 +21,14 @@ export const UserInfo = (props)=>(
 class UserCard extends React.Component{
     render(){
         return(
-            <Flex flexGrow={1} column  alignItems="center">
-                <UserInfo details={true} task = {this.props.task} />
+            <Flex flexGrow={1} column >
+                <Flex flexGrow={1} alignItems="center">
+                    <UserInfo details={true} task = {this.props.task} />
+                </Flex>
                 <Divider  />
-                <CheckPoints details={true} checkpoints = {this.props.task.checkpoints}/>
+                <Flex flexGrow={1}>
+                    <CheckPoints details={true} checkpoints = {this.props.task.checkpoints}/>
+                </Flex>
             </Flex>
               
         )

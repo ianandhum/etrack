@@ -22,14 +22,14 @@ class ClientView extends React.Component{
         return (
             <>
                 <ShortHelmet title = {"Employee Tracker - Clients"} />
-                <Page noScroll>
+                <Page noScroll showFooter>
                     <FlexView column grow>
-                        <FlexView style={{margin:"3% 3% 0"}}>
+                        <FlexView style={{margin:"1% 3% 0"}}>
                             <h2 style={{margin:"0 0 5px"}}>Clients</h2>
                         </FlexView>
                         <FlexView column grow style={{margin:"10px 3%",minHeight:"350px",alignItems:"stretch"}} >
                         {this.props.waiting && 
-                                
+                             
                             <FlexView grow hAlignContent="center">
                                 <Loading/>
                             </FlexView>

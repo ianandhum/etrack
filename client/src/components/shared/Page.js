@@ -2,6 +2,7 @@ import React from 'react'
 import {Flex,Block} from 'reakit'
 
 import TopBar from './TopBar'
+import Footer from './Footer'
 
 
 const Page = (props)=>(
@@ -12,6 +13,11 @@ const Page = (props)=>(
         <Block flexGrow={1} overflow="hidden auto"  zIndex={0} use={(props.noScroll)?Flex:Block} column>
             {props.children}
         </Block>
+        {
+            props.showFooter &&
+    
+            <Footer/>
+        }
     </Flex>
 )
 

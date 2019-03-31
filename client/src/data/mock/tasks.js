@@ -3,7 +3,7 @@ import Faker from 'faker'
 export const _Profile=()=>{
     return {
         avatar:"https://placekitten.com/"+parseInt((Math.random()*100)%100) +"/"+parseInt((Math.random()*100)%100),
-        name:Faker.name.findName()
+        name:Faker.company.companyName()
     }
 }
 export const _Profiles=(num)=>{
@@ -37,7 +37,7 @@ export const _Task=()=>{
         begunFrom: Faker.helpers.createCard().address.city+ " " +Faker.helpers.createCard().address.country + " " +Faker.helpers.createCard().address.state,
         to:Faker.helpers.createCard().address.city+ " " +Faker.helpers.createCard().address.country + " " +Faker.helpers.createCard().address.state,
         checkpoints:_CheckPoints(routeLimit),
-        deadLine:Faker.date.future().toDateString(),
+        deadLine:Faker.date.future().toLocaleDateString(),
         user:_Profile(),
         checkpointsRaw:_GPSTrace(routeLimit)
     }

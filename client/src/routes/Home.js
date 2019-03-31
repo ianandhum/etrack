@@ -22,7 +22,7 @@ class Home extends Component{
         return(
             <>    
                 <ShortHelmet/>
-                <Page>
+                <Page noScroll>
                     <FlexView column grow>
                         <GrayBlock position="relative">
                         {

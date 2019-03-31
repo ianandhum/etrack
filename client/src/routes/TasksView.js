@@ -6,25 +6,26 @@ import ShortHelmet from "../helpers/ShortHelmet";
 import Page from '../components/shared/Page';
 import Loading from '../components/util/Loading'
 import FilterBlock from '../components/TasksView/FilterBlock'
+import TaskListItem from "../components/TasksView/TaskListItem";
 
 import { initTasks,fetchTasks } from '../data/actions/tasks';
 
 
 class ClientView extends React.Component{
     
-    componentDidMount(){
+    componentWillMount(){
         this.props.initTasksData()
     }
     render(){
         return (
             <>
-                <ShortHelmet title = {"Employee Tracker - Clients"} />
-                <Page noScroll>
+                <ShortHelmet title = {"Employee Tracker - Tasks"} />
+                <Page noScroll showFooter>
                     <FlexView column grow>
-                        <FlexView style={{margin:"3% 3% 0"}}>
-                            <h2 style={{margin:"0 0 5px"}}>All Tasks</h2>
+                        <FlexView style={{margin:"1% 3% 0"}}>
+                            <h2 style={{margin:"0 0 5px",minHeight:"50px"}}>All Tasks</h2>
                         </FlexView>
-                        <FlexView column grow style={{margin:"10px 3%",minHeight:"350px",alignItems:"stretch"}} >
+                        <FlexView column grow style={{margin:"10px 3%",padding:"20px 0",minHeight:"350px",alignItems:"stretch"}} >
                         {this.props.waiting && 
                                 
                             <FlexView grow hAlignContent="center">
@@ -35,7 +36,14 @@ class ClientView extends React.Component{
                             this.props.loaded &&
                             (<>
                                 <FilterBlock/>
-                                
+                                <FlexView grow wrap>
+                                {
+                                    
+                                    this.props.tasks.map((task,index)=>(
+                                        <TaskListItem task = {task} key={index}/>
+                                    ))
+                                }
+                                </FlexView>
                             </>)
                         }
                         </FlexView>
@@ -50,9 +58,9 @@ class ClientView extends React.Component{
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        waiting:state.tasks.waiting,
+        waiting:state.tasks.view.waiting,
         loaded:state.tasks.loaded,
-        tasks:state.tasks.tasks,
+        tasks:state.tasks.all,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
