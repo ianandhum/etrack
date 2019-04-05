@@ -1,5 +1,10 @@
 import Faker from 'faker'
 
+import {_GPSTrace} from './tasks'
+
+
+const dest = _GPSTrace(15);
+
 export const _Client=()=>{
     return {
         name:Faker.name.findName(),
@@ -11,7 +16,8 @@ export const _Client=()=>{
         area:"SOUTH",
         territory:"S2",
         code:parseInt(Math.random()*1000),
-        sector:"1C" 
+        sector:"1C",
+        to:dest.to
     }
 }
 export const _Clients=(num)=>{

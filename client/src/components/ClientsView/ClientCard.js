@@ -1,6 +1,7 @@
 import React from 'react'
 import {Flex,Card,Block} from 'reakit'
 import {MdBusinessCenter} from 'react-icons/md'
+import {Link} from 'react-router-dom'
 
 import {Button} from '../util/Buttons'
 
@@ -39,7 +40,7 @@ class ClientCard extends React.Component{
                     <Block flexGrow={1}> {this.props.client.sector} </Block>
                 </Card>
                 <Flex use={Flex} flexGrow={1} alignItems="end" margin="0 6px">
-                    <Button palette="success" padding="20px 0px" flexGrow={1}>Schedule A Task</Button>
+                    <Button use={Link} to="/new-task" palette="success" padding="20px 0px" flexGrow={1}>Schedule A Task</Button>
                 </Flex>
                 
             </Flex>

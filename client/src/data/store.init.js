@@ -2,22 +2,28 @@ export default {
     tasks:{
         active:[],
         loaded:false,
-        tasks:[],
+        activeLoaded:false,
+        all:[],
         view:{
             active:{
                 activeIndex:-1
             },
             selected:null,
-            waiting:true
+            waiting:false
         }
     },
     client:{
         loaded:false,
         waiting:false,
-        clients:{},
+        clients:[],
         view:{
             selectedIndex:-1,
             fenceCoords:[]
         }
+    },
+    employee:{
+        waiting:false,
+        loaded:false,
+        employees:[]
     }
 }

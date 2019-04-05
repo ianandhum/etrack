@@ -16,7 +16,8 @@ import { initTasks as initActiveTasks } from '../data/actions/active_tasks';
 
 class Home extends Component{
     componentDidMount(){
-        this.props.initActiveTasks()
+        if(!this.props.loaded)
+            this.props.initActiveTasks()
     }
     render(){
         return(
@@ -24,7 +25,7 @@ class Home extends Component{
                 <ShortHelmet/>
                 <Page noScroll>
                     <FlexView column grow>
-                        <GrayBlock position="relative">
+                        <GrayBlock use={FlexView} grow={1} position="relative">
                         {
                             this.props.loaded ?
                                 <>
@@ -33,8 +34,8 @@ class Home extends Component{
                                     <BottomBar/>
                                 </>
                             :
-                                <FlexView grow={1} column basis={300}>
-                                    <Loading/>
+                                <FlexView grow={1} column basis={500} vAlignContent="center">
+                                    <Loading withText/>
                                 </FlexView>
                         }
                         </GrayBlock>
@@ -47,7 +48,7 @@ class Home extends Component{
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        loaded:state.tasks.loaded
+        loaded:state.tasks.activeLoaded
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -11,10 +11,14 @@ export const VIEW_WAIT_AND_SELECT_TASK = 'VIEW_WAIT_AND_SELECT_TASK'
 
 //ACTION CREATORS
 export var initTasks=function(){
-    return {
-        type:INIT_ACTIVE_TASKS,
-        active:_Tasks(6)//debugging only
-        
+    return (dispatch)=>{
+        setTimeout(function(){
+            dispatch({
+                type:INIT_ACTIVE_TASKS,
+                active:_Tasks(6)//debugging only 
+            })
+        },1000)
+        return;
     }
 }
 

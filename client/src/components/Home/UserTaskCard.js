@@ -45,12 +45,15 @@ export const UserInfo = (props)=>(
             <RoundImage src = {props.task.user.avatar} height = {30} width={30}/>
             <LightHeader as='h3'>{props.task.user.name}</LightHeader>
         </FlexView>
-        <FlexView style={{margin:"5px"}}>
-                <MdBookmark color={'purple'} fontSize={17}/>
-                <div>
-                    {props.task.begunFrom}  
-                </div>
-        </FlexView>
+        {
+            props.task.begunFrom && 
+            <FlexView style={{margin:"5px"}}>
+                    <MdBookmark color={'purple'} fontSize={17}/>
+                    <div>
+                        {props.task.begunFrom}  
+                    </div>
+            </FlexView>
+        }
         <FlexView style={{margin:"5px"}}>
                 <MdBookmark color={'#3c3'} fontSize={17}/>
                 <div>

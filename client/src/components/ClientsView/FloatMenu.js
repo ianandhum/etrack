@@ -28,7 +28,7 @@ class FloatMenu extends React.Component{
                 <FlexView column>
                     <MenuButton palette="primary" disabled={!this.props.showSave} onClick = {this.props.save}>
                         <MdSave fontSize = {25}/>
-                        <Tooltip placement="left">Clear All Markers</Tooltip>
+                        <Tooltip placement="left">Save</Tooltip>
                     </MenuButton>
                     <MenuButton palette="secondary" onClick = {this.props.clearAll}>
                         <MdUndo fontSize = {25}/>

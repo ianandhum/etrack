@@ -35,7 +35,7 @@ class MapLayout extends Component {
     this.autoCenter();
   }
   componentWillReceiveProps(newProps){
-    this.autoCenter(newProps.checkpoints);
+      this.autoCenter(newProps.checkpoints);
   }
   render() {
     return (

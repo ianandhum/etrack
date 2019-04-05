@@ -64,6 +64,8 @@ class GeoFenceMap extends Component {
                 <GeoCodeView/>
                 <Polygon
                     paths={this.state.fenceCoords}
+                    fillColor="#333"
+                    fillOpacity={0.7}
                     strokeColor="#333"
                     strokeOpacity={0}
                     strokeWeight={5}
@@ -77,8 +79,8 @@ class GeoFenceMap extends Component {
                         key={index}
                         icon={{
                             url: "/assets/marker_point.svg",
-                            anchor: new this.props.google.maps.Point(6,6),
-                            scaledSize:new this.props.google.maps.Size(12,12),
+                            anchor: new this.props.google.maps.Point(12,12),
+                            scaledSize:new this.props.google.maps.Size(24,24),
                         }}
                         />
                     )

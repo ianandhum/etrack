@@ -51,7 +51,7 @@ class TaskView extends React.Component{
                             </>
                             :
                             
-                            <Loading/>
+                            <Loading withText/>
                         }
                         </FlexView>
                     </FlexView>

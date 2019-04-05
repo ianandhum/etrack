@@ -38,7 +38,7 @@ class Selector extends React.Component{
                         <Block style={{width:300}}>
                             <Select
                                 value={this.state.clientListIndex}
-                                options={clientList}MdInsertEmoticon
+                                options={clientList}
                                 onChange={item => {
                                     this.setState({ clientListIndex: item })
                                     this.props.selectClient(item.value)

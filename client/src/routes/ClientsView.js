@@ -16,7 +16,8 @@ import { initClients,fetchClients } from '../data/actions/clients';
 class ClientView extends React.Component{
     
     componentDidMount(){
-        this.props.initClientData()
+        if(!this.props.loaded)
+            this.props.initClientData()
     }
     render(){
         return (
@@ -31,7 +32,7 @@ class ClientView extends React.Component{
                         {this.props.waiting && 
                              
                             <FlexView grow hAlignContent="center">
-                                <Loading/>
+                                <Loading withText/>
                             </FlexView>
                         }
                         {
@@ -80,9 +81,9 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        initClientData: (taskId) => {
+        initClientData: () => {
             dispatch(initClients())
-            dispatch(fetchClients(taskId))   
+            dispatch(fetchClients())   
         }
     }
 }

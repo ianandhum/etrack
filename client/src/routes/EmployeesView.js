@@ -13,7 +13,9 @@ import { initEmployees,fetchEmployees } from '../data/actions/employees';
 class EmployeesView extends React.Component{
     
     componentDidMount(){
-        this.props.initClientData()
+        if(!this.props.loaded){
+            this.props.initEmployeeData()
+        }
     }
     render(){
         return (
@@ -28,7 +30,7 @@ class EmployeesView extends React.Component{
                         {this.props.waiting && 
                              
                             <FlexView grow hAlignContent="center">
-                                <Loading/>
+                                <Loading withText/>
                             </FlexView>
                         }
                         {
@@ -70,7 +72,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        initClientData: (taskId) => {
+        initEmployeeData: (taskId) => {
             dispatch(initEmployees())
             dispatch(fetchEmployees())   
         }

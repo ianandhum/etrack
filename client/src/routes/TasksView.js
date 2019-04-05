@@ -11,10 +11,11 @@ import TaskListItem from "../components/TasksView/TaskListItem";
 import { initTasks,fetchTasks } from '../data/actions/tasks';
 
 
-class ClientView extends React.Component{
+class TasksView extends React.Component{
     
     componentWillMount(){
-        this.props.initTasksData()
+        if(!this.props.loaded)
+            this.props.initTasksData()
     }
     render(){
         return (
@@ -29,7 +30,7 @@ class ClientView extends React.Component{
                         {this.props.waiting && 
                                 
                             <FlexView grow hAlignContent="center">
-                                <Loading/>
+                                <Loading withText/>
                             </FlexView>
                         }
                         {
@@ -73,4 +74,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(ClientView)
+export default connect(mapStateToProps,mapDispatchToProps)(TasksView)
