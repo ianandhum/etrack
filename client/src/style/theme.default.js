@@ -2,7 +2,7 @@ import theme from 'reakit-theme-default'
 
 export default {
     ...theme,
-    background:"#fffcfc",
+    background:"#fcfcfc",
     shadowBlur:"8",
     shadowX:"2",
     shadowY:"3",

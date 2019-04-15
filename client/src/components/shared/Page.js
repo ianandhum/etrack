@@ -1,18 +1,23 @@
 import React from 'react'
-import {Flex} from 'reakit'
+import {Flex,Block} from 'reakit'
 
 import TopBar from './TopBar'
-
+import Footer from './Footer'
 
 
 const Page = (props)=>(
-    <Flex column>
+    <Flex column minHeight="100vh" maxHeight="100vh">
         <Flex style={{height:"50px",zIndex:"1"}}>
             <TopBar/>
         </Flex>
-        <Flex flex={1}>
+        <Block flexGrow={1} overflow="hidden auto"  zIndex={0} use={(props.noScroll)?Flex:Block} column>
             {props.children}
-        </Flex>
+        </Block>
+        {
+            props.showFooter &&
+    
+            <Footer/>
+        }
     </Flex>
 )
 

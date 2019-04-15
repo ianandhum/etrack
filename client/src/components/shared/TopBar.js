@@ -4,8 +4,8 @@ import Card from '../util/Card'
 import LeftMenu from './LeftMenu';
 import { Heading, Toolbar, withTheme,Avatar,InlineBlock, Button, Popover,Flex} from "reakit";
 import {theme} from 'styled-tools'
-import { MdPerson ,MdLiveTv} from 'react-icons/md'
-import { FaLock} from 'react-icons/fa'
+import { MdPerson} from 'react-icons/md/index.mjs'
+import { FaLock} from 'react-icons/fa/index.mjs'
 import {Link} from "react-router-dom"
 
 
@@ -34,21 +34,15 @@ const TopBar = (props)=>(
                         <Popover use={Card} borderRadius={0} fade slide expand hideOnClickOutside {...popover} minWidth={200}>
                             <FlexView column grow>
                                 <Flex use={Link} to="/" textDecoration='none' padding='5px 0'>
-                                    <MdPerson fontSize={22} style={{color:'#fff',backgroundColor:"#aaa",borderRadius:"3px",padding:'3px'}}/>
+                                    <MdPerson fontSize={22} style={{color:'#fff',backgroundColor:"#666",borderRadius:"3px",padding:'3px'}}/>
                                     <InlineBlock flex={1} paddingLeft={15}>    
-                                        Amal Pearson
+                                        My Account
                                     </InlineBlock>
                                 </Flex>
                                 <Flex use={Link} to="/" textDecoration='none' padding='5px 0'>
-                                    <MdLiveTv fontSize={22} style={{color:'#fff',backgroundColor:"#aaa",borderRadius:"3px",padding:'3px'}}/>
+                                    <FaLock fontSize={22} style={{color:'#fff',backgroundColor:"#666",borderRadius:"3px",padding:'6px'}}/>
                                     <InlineBlock flex={1} paddingLeft={15}>    
-                                        Live View
-                                    </InlineBlock>
-                                </Flex>
-                                <Flex use={Link} to="/" textDecoration='none' padding='5px 0'>
-                                    <FaLock fontSize={22} style={{color:'#fff',backgroundColor:"#aaa",borderRadius:"3px",padding:'6px'}}/>
-                                    <InlineBlock flex={1} paddingLeft={15}>    
-                                        Logout
+                                        Leave
                                     </InlineBlock>
                                 </Flex>
                             </FlexView>

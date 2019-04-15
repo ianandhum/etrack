@@ -1,13 +1,13 @@
-import React from 'react'
-import {styled,Card} from 'reakit'
-import {palette,ifProp} from 'styled-tools'
-import FlexView from 'react-flexview'
-import { MdBookmark, MdHourglassFull } from 'react-icons/md';
-import { FaTruck } from 'react-icons/fa';
-
-import Moment from 'moment'
-
-import Faker from 'faker'
+import Moment from 'moment';
+import React from 'react';
+import FlexView from 'react-flexview';
+import { MdBookmark, MdHourglassFull, MdInfo, MdLocationOn } from 'react-icons/md';
+import { Card, Flex, styled,Tooltip,Block } from 'reakit';
+import { ifProp, palette } from 'styled-tools';
+import {connect} from 'react-redux'
+import {push} from 'connected-react-router'
+import { vSetActiveTask } from '../../data/actions/active_tasks';
+import { CircleButton } from '../util/Buttons';
 
 
 
@@ -15,16 +15,21 @@ const BorderedCard = styled(Card)`
     height:100%;
     border:1px solid ${palette('border')};
     border-radius:5px;
+    cursor:pointer;
+    &:hover{
+        background:${palette('grayscale',-2)};
+
+    }
 `
-const LightHeader = styled('h4')`
+export const LightHeader = styled('h4')`
     font-weight:200;
     margin:0;
 `
-const RoundImage = styled('img')`
+export const RoundImage = styled('img')`
     border-radius:50%;
     margin:0 5px;
 `
-const RoundStatus = styled('div')`
+export const RoundStatus = styled('div')`
     height:10px;
     width:10px;
     border-radius:50%;
@@ -33,66 +38,127 @@ const RoundStatus = styled('div')`
     background-color:${ifProp('active','#4f4',"#f44")};
 `
 
-const LeftCard = (props)=>(
-    <FlexView column>
+export const UserInfo = (props)=>(
+    <Flex column>
         <FlexView style={{margin:"5px 8px"}}>
-            <RoundStatus active/>
-            <RoundImage src = {"https://placekitten.com/" + Faker.random.number()%1000+"/200"} height = {30} width={30}/>
-            <LightHeader as='h3'>{Faker.name.findName()}</LightHeader>
+            <RoundStatus active={props.task.status}/>
+            <RoundImage src = {props.task.user.avatar} height = {30} width={30}/>
+            <LightHeader as='h3'>{props.task.user.name}</LightHeader>
         </FlexView>
-        <FlexView style={{margin:"5px"}}>
-                <MdBookmark color={'purple'} fontSize={17}/>
-                <div>
-                    {Faker.helpers.createCard().address.city}  {Faker.helpers.createCard().address.country} {Faker.helpers.createCard().address.state}    
-                </div>
-        </FlexView>
+        {
+            props.task.begunFrom && 
+            <FlexView style={{margin:"5px"}}>
+                    <MdBookmark color={'purple'} fontSize={17}/>
+                    <div>
+                        {props.task.begunFrom}  
+                    </div>
+            </FlexView>
+        }
         <FlexView style={{margin:"5px"}}>
                 <MdBookmark color={'#3c3'} fontSize={17}/>
                 <div>
-                    {Faker.helpers.createCard().address.city}  {Faker.helpers.createCard().address.country} {Faker.helpers.createCard().address.state}    
+                    {props.task.to}
                 </div>
         </FlexView>
         <FlexView style={{margin:"5px"}}>
                 <MdHourglassFull color={'#333'} fontSize={17}/>
                 <div>
-                    {Moment(Faker.date.recent().toLocaleString()).fromNow()}     
+                    {Moment(props.task.date).fromNow()}     
                 </div>
         </FlexView>
-    </FlexView>
-)
-const RightCard = (props)=>(
-    <Card flex="1" borderLeft="1px dashed" overflowY = "hidden" borderColor={palette('border')}>
-        <h4 style={{marginTop:"0"}}>Recent Checkpoints</h4>
-        <CheckPointView/>
-        <CheckPointView/>
-        <CheckPointView/>
-    </Card>
+    </Flex>
 )
 
 const CheckPointView = (props)=>(
-    <FlexView>
-        <FaTruck fontSize={16}/>
+    <Block use={FlexView} margin="2px" padding="6px" borderRadius='5px' background={(props.active)?palette('grayscale',-2):palette('grayscale',-1)}>
+        <MdLocationOn color="#37c" fontSize={16}/>
         <div style={{flex:"1 0 auto",padding:"0px 3px"}}>
-            {Faker.helpers.createCard().address.city}
+            {props.checkpoint.location}
         </div>
 
         <span style={{padding:"0px 3px"}}>
-            {Moment(Faker.date.recent().toLocaleString()).fromNow(true)} 
+            {Moment(props.checkpoint.datetime).fromNow(true)} 
         </span>
-    </FlexView>
+    </Block>
 )
 
-const UserTaskCard = (props)=>(
-    <BorderedCard width={props.active ? "600px":"300px"} margin="5px 10px 0">
-        <FlexView>
-            <LeftCard {...props}/>
+export class CheckPoints extends React.Component{
+    render(){
+
+        return (
+        <Card flex="1" borderLeft={(!this.props.details)?"1px dashed":"0"} overflowY = "auto" background='transparent' borderColor={palette('border')}>
+            <Flex flex={1} as='h4' style={{marginTop:"0"}}>
+                <div style={{flexGrow:1,padding:"3px 0px"}}>
+                    Recent Checkpoints
+                </div>
+                
+                {
+                    !this.props.details &&
+                    <div>
+                        <CircleButton onClick={this.props.gotoTask} palette="transparent" height="32px" width="32px" padding="3px">
+                            <MdInfo fontSize={20}/>
+                            <Tooltip placement="left">Show Details</Tooltip>
+                        </CircleButton>
+                    </div>
+                }
+            </Flex>
+            <Flex flex={1} column>
             {
-                props.active && <RightCard {...props}/>
+                this.props.checkpoints.length > 0 ?
+                    this.props.checkpoints.map((checkpoint,index)=>(
+                        <CheckPointView active={index === 0} key={index} checkpoint = {checkpoint}/>
+                    ))
+                :
+                    <div style={{flexGrow:1}}>
+                        No updates yet
+                    </div>
             }
-            
-            
-        </FlexView>
+            </Flex>
+        </Card>
+    )
+    }
+}
+class  UserTaskCard extends React.Component{
+    onCardClick(event){
+        if(this.props.activeCard !== this.props.index)
+            this.props.setActiveTask(this.props.index)
+    }
+    render(){
+        
+        return(
+            <BorderedCard 
+                onClick={this.onCardClick.bind(this)} 
+                width={this.props.active ? "600px":"300px"}  
+                padding="0px" 
+                margin="5px 10px 0" 
+               display="flex">
 
-    </BorderedCard>
-)
-export default UserTaskCard;
+                <FlexView grow style={{minHeight:"80%"}} >
+                    <UserInfo task ={this.props.task}/>
+                    {
+                        this.props.active && <CheckPoints gotoTask = {()=>this.props.gotoTask(this.props.task.id)} checkpoints = {this.props.task.checkpoints}/>
+                    }
+                </FlexView>
+            </BorderedCard>
+        )
+    }
+}
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        activeCard:state.tasks.view.active.activeIndex
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        setActiveTask: (index) => {
+            dispatch(vSetActiveTask(index))
+        },
+        gotoTask:(taskId)=>{
+            dispatch(push("/task/"+taskId))
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserTaskCard)

@@ -1,3 +1,29 @@
 export default {
-    
+    tasks:{
+        active:[],
+        loaded:false,
+        activeLoaded:false,
+        all:[],
+        view:{
+            active:{
+                activeIndex:-1
+            },
+            selected:null,
+            waiting:false
+        }
+    },
+    client:{
+        loaded:false,
+        waiting:false,
+        clients:[],
+        view:{
+            selectedIndex:-1,
+            fenceCoords:[]
+        }
+    },
+    employee:{
+        waiting:false,
+        loaded:false,
+        employees:[]
+    }
 }

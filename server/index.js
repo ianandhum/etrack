@@ -3,7 +3,8 @@ var path =  require('path');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var bb =  require('express-busboy');
+var passport = require('passport');
+var expressSession = require('express-session');
 
 if(process.env.NODE_ENV!='production'){
   //parse env file
@@ -22,8 +23,6 @@ var apiRoutes = require('./routes/main.routes');
 // define our app using express
 const app = express();
 
-// express-busboy to parse multipart/form-data
-bb.extend(app);
 
 // dis-allow-cors
 app.use(function(req,res,next){
@@ -34,18 +33,38 @@ app.use(function(req,res,next){
 })
 
 // configure app
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
-
+app.use(expressSession({
+  secret: 'KEY_FOR_SESSION_SIGNING',
+  resave:false,
+  saveUninitialized:false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // connect to database
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true },function(err){
+  if(!err){
+    console.log("Mongodb Init")
+  }
+  else{
+    console.log(err)
+  }
+});
+
+
+require('./helpers/auth')(passport);
+
+var routes = apiRoutes(passport);
+app.use('/', routes);
 
 
 //Connect Routes to express
-app.use('/api',apiRoutes);
+app.use('/api',routes);
 
 
 // catch 404

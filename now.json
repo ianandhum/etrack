@@ -7,18 +7,20 @@
         {"src":"server.js","use":"@now/node-server"}
     ],
     "routes":[
-      { "src": "^/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/client/static/$1" },
-      { "src": "^/favicon.ico", "dest": "/client/favicon.ico" },
-      { "src": "^/asset-manifest.json", "dest": "/client/asset-manifest.json" },
-      { "src": "^/manifest.json", "dest": "/client/manifest.json" },
-      { "src": "^/precache-manifest.(.*)", "dest": "/client/precache-manifest.$1" },
-      { "src": "^/service-worker.js", "headers": { "cache-control": "s-maxage=0" }, "dest": "/client/service-worker.js" },
-      { "src": "^/api(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "server.js" },
-      { "src": "^/(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "/client/index.html" }
+        { "src": "^/static/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/client/static/$1" },
+        { "src": "^/assets/(.*)", "headers": { "cache-control": "s-maxage=31536000,immutable" }, "dest": "/client/assets/$1" },
+        { "src": "^/favicon.ico", "dest": "/client/favicon.ico" },
+        { "src": "^/asset-manifest.json", "dest": "/client/asset-manifest.json" },
+        { "src": "^/manifest.json", "dest": "/client/manifest.json" },
+        { "src": "^/precache-manifest.(.*)", "dest": "/client/precache-manifest.$1" },
+        { "src": "^/service-worker.js", "headers": { "cache-control": "s-maxage=0" }, "dest": "/client/service-worker.js" },
+        { "src": "^/api(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "server.js" },
+        { "src": "^/(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "/client/index.html" }
     ],
     "env":{
         "NODE_ENV":"production",
         "MONGODB_URL":"mongodb://anandhu:e3JAgJaWhCrPUFQR@cluster0-shard-00-00-mkp49.mongodb.net:27017,cluster0-shard-00-01-mkp49.mongodb.net:27017,cluster0-shard-00-02-mkp49.mongodb.net:27017/etrack?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
-        "NODE_PORT":"3001"
+        "NODE_PORT":"3001",
+        "ANLON_API_ENDPOINT":"https://anlon.pro910.com/api"
     }
 } 
