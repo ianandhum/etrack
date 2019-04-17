@@ -14,6 +14,7 @@ import Loading from '../components/util/Loading'
 
 import { initTasks as initActiveTasks } from '../data/actions/active_tasks';
 
+//Home Route
 class Home extends Component{
     componentDidMount(){
         if(!this.props.loaded)
