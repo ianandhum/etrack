@@ -1,20 +1,18 @@
 
 var express = require('express');
 
-var postController = require('../controllers/client.controller');
+var locationRoutes = require('./location.routes');
 
-var isAuthenticated = require('../helpers/auth/isAuthenticated')
 
 var authRoutes = require('./auth.routes')
 
 const router = express.Router();
 
-
 module.exports =function(passport){
 
     authRoutes(router,passport);
     
-    router.route('/').get(isAuthenticated,postController.getUsers);
+    router.use("/location",locationRoutes(passport));
     
     return router;
 }

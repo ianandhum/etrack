@@ -4,7 +4,7 @@ module.exports =function(router){
             res.send({
                 status:true,
                 user:{
-                    name:"user_name",
+                    name:"test_user",
                     id:1
                 }
             })
@@ -21,7 +21,7 @@ module.exports =function(router){
             res.send({
                 status:true,
                 user:{
-                    name:"user_name",
+                    name:"test_user",
                     id:1
                 }
             })

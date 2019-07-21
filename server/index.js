@@ -52,7 +52,8 @@ mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true },function(err)
     console.log("Mongodb Init")
   }
   else{
-    console.log(err)
+    console.log(err);
+    process.exit(1);
   }
 });
 
@@ -60,7 +61,7 @@ mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true },function(err)
 require('./helpers/auth')(passport);
 
 var routes = apiRoutes(passport);
-app.use('/', routes);
+//app.use('/', routes);
 
 
 //Connect Routes to express
@@ -73,6 +74,6 @@ app.use((req, res, next) => {
 });
 
 // start the server
-app.listen(process.env.NODE_PORT ||3000 ,() => {
+app.listen(process.env.NODE_PORT || 3000 ,() => {
   console.log(`Server has Started at localhost:${process.env.NODE_PORT}`);
 });
