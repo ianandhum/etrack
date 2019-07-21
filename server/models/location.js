@@ -2,7 +2,7 @@ var mongoose =  require('mongoose');
 const Schema = mongoose.Schema;
 
 const locationSchema = new Schema({
-  _clientId: { type: 'Integer', required: true },
+  _clientId: { type: 'Number', required: true },
   timestamp: { type: 'Date', required: true },
   location:{
     lat: { type: 'Number', required: true },
@@ -10,4 +10,4 @@ const locationSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Location', locationSchema);
+module.exports = mongoose.model('location', locationSchema);
