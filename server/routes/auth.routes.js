@@ -25,4 +25,8 @@ module.exports=function(router,passport){
     if(process.env.NODE_ENV !== 'production'){
         MockHostServer(router);
     }
+    else{
+        //Allow test for now
+        MockHostServer(router);
+    }
 }
