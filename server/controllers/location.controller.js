@@ -18,7 +18,7 @@ module.exports = {
                 res.status(500).send(err);
             }
             
-                res.json({ locationHitory ,user:req.user});
+            res.json({ locationHitory});
         })
     },
     updateNewLocation:function (req,res) {
@@ -26,9 +26,10 @@ module.exports = {
             console.log(req.body);
             var body = req.body;
             var document = new Location({
-                _clientId:req.user.id,
-                timestamp:body.timestamp,
-                location:body.new_location
+                _clientId: req.user.id,
+                timestamp: body.timestamp,
+                location:  body.new_location,
+                employeeId:req.user.Id 
             });
             document.save().then(function(result){
                 res.json({
