@@ -21,6 +21,6 @@
         "NODE_ENV":"production",
         "MONGODB_URL":"mongodb+srv://anandhu:e3JAgJaWhCrPUFQR@cluster0-mkp49.mongodb.net/etrack?retryWrites=true&w=majority",
         "NODE_PORT":"3001",
-        "ANLON_API_ENDPOINT":"https://anlon.pro910.com/api"
+        "ANLON_API_ENDPOINT":"http://localhost:3001/api"
     }
 } 
